@@ -10,7 +10,7 @@ A lot of the work of data annotation for machine learning is done through crowds
 
 Not having much of experience annotating data, we began to brainstorm ideas for the most efficient method. Our first thought was to create an Excel spread sheet that we could annotate row by row. Tweet in one column. Annotation in the other. Easy. 
 
-Certainly, this could have worked, but it wasn't much fun as a concept, and well... it's [Excel](https://www.reddit.com/r/statistics/comments/3raa8t/why_all_the_hate_towards_excel/). Which brought us to our next idea, that being a *much* cooler set-up using `library(googlesheets4)` and some `library(tidyverse)` packages.
+Certainly, this could have worked, but it wasn't much fun as a concept. Which brought us to our next idea, that being a set-up using `library(googlesheets4)` and some `library(tidyverse)` packages in R.
 
 # The idea
 
@@ -51,64 +51,62 @@ For example:
 
 # Step Three: Build the annotator function
 
-Now it's time to build the annotator function. The function starts by reading in the data from both sheets and then using using ```dplyr::anti_join()``` to remove any data that has already been annotated. Next, it uses a for loop to sequence through the rows in the spreadsheet, printing one string at a time (in our case, a tweet), and asking us to determine whether the tweet is or is not an instance of what we are annotating for. 
+Now it's time to build the annotator function. The function starts by reading in the data from both sheets and then using using `dplyr::anti_join()` to remove any data that has already been annotated. Next, it uses a for loop to sequence through the rows in the spreadsheet, printing one string at a time (in our case, a tweet), and asking us to determine whether the tweet is or is not an instance of what we are annotating for. 
 
-The interactive component is achieved using base R's ```menu``` function, which asks us to enter a 1 or 2 on our keyboards corresponding to the answer. (Note: you can add more than two options. For example, you might add an 'unsure' option for more ambiguous cases you wish to deal with later.) 
+The interactive component is achieved using base R's `menu` function, which asks us to enter a 1 or 2 on our keyboards corresponding to the answer. (Note: you can add more than two options. For example, you might add an 'unsure' option for more ambiguous cases you wish to deal with later.) 
 
-Finally, the function will store the result in a tibble, and append the output to our Google Sheet using `googlesheets4::sheet_append()`. You'll notice that the function also makes use of ```library(crayon)```. This isn't necessary by any means. We just found that putting the string in a unique colour made it a little easier to distinguish from any surrounding text or console messages. 
+Finally, the function will store the result in a tibble, and append the output to our Google Sheet using `googlesheets4::sheet_append()`. You'll notice that the function also makes use of `library(crayon)`. This isn't necessary by any means. We just found that putting the string in a unique colour made it a little easier to distinguish from any surrounding text or console messages. 
 
 ```r
-tweetannotate <- function(){
+  tweetannotate <- function(){
   
-  # Note: you will need to create your own Google Sheet for the code to run 
-  # (this one is currently set to 'viewer' only)
-  sheet_url = "https://docs.google.com/spreadsheets/d/1xi1tFb5XycUhjf2LWRQuyU1R7bNK2oZnmHoCF5y4Moo/edit?usp=sharing"
+    sheet_url = "<sheet URL>"
 
-  df1 <- read_sheet(sheet_url, 
-                    sheet = "unannotated") %>% 
-         mutate(tweet = as.character(tweet))
+    df1 <- read_sheet(sheet_url, 
+                      sheet = "unannotated") %>% 
+           mutate(tweet = as.character(tweet))
 
-  df2 <- read_sheet(sheet_url, 
-                    sheet = "annotated") %>% 
-         mutate(tweet = as.character(tweet))
+    df2 <- read_sheet(sheet_url, 
+                      sheet = "annotated") %>% 
+           mutate(tweet = as.character(tweet))
 
-  df3 <- anti_join(df1, df2, by = "tweet")
+    df3 <- anti_join(df1, df2, by = "tweet")
 
-  for (row in 1:nrow(df3)){
-  
-    username <- paste0(df3[row, "username"])
-    tweet <- paste0(df3[row, "tweet"])
-  
-    cat(crayon::green(tweet))
-  
-    answer <- menu(c("Instance of x", 
-                     "Not an instance of x"), 
-                     title = "")
-  
-    output <- tibble(
-      username = username,
-      tweet = tweet,
-      annotation = as.numeric(answer)
-    ) %>%
-      mutate(annotation = case_when(
-        annotation == 1 ~"Instance of x",
-        TRUE ~ "Not an instance of x"
-      ))
-  
-    sheet_append(sheet_url, output, sheet = "annotated")
+    for (row in 1:nrow(df3)){
+
+      username <- paste0(df3[row, "username"])
+      tweet <- paste0(df3[row, "tweet"])
+
+      cat(crayon::green(tweet))
+
+      answer <- menu(c("Instance of x", 
+                       "Not an instance of x"), 
+                       title = "")
+
+      output <- tibble(
+        username = username,
+        tweet = tweet,
+        annotation = as.numeric(answer)
+      ) %>%
+        mutate(annotation = case_when(
+          annotation == 1 ~"Instance of x",
+          TRUE ~ "Not an instance of x"
+        ))
+
+      sheet_append(sheet_url, output, sheet = "annotated")
+    }
   }
-}
 ```
 
 # Step Five: Let the annotating begin!
 
-To run the function and start the annotation process, enter ```tweetannotate()``` into your RStudio console. If you don't want to see the ```library(googlesheets4)``` messages for every entry, you could add another line of code to silence them. We've found that it's handy to have the Google Sheet open alongside or in the background. That way, if you accidentally enter 1 when you meant to enter 2 (or vice versa), you can easily manually correct it.
+To run the function and start the annotation process, enter `tweetannotate()` into your RStudio console. If you don't want to see the `library(googlesheets4)` messages for every entry, you could add another line of code to silence them. We've found that it's handy to have the Google Sheet open alongside or in the background. That way, if you accidentally enter 1 when you meant to enter 2 (or vice versa), you can easily manually correct it.
 
 ![](/post/annotating-data_files/annotate-tweet-video.gif){width=1500px height=1500px}
 
 # Building on the current application
 
-The function provided above is just a basic template and can be adapted in all kinds of ways. For example, if multiple people are going to be annotating the data, you may want to keep track of who is doing which annotations. This could be achieved by adding another column to the spreadsheet (e.g., 'annotator') and using ```menu``` again at the beginning of the function to get the annotator to select their name or initials from a list.
+The function provided above is just a basic template and can be adapted in all kinds of ways. For example, if multiple people are going to be annotating the data, you may want to keep track of who is doing which annotations. This could be achieved by adding another column to the spreadsheet (e.g., 'annotator') and using `menu` again at the beginning of the function to get the annotator to select their name or initials from a list.
 
 Another idea might be to add some randomization into the process, so that you are annotating random rows on each session, rather than following some inherent order.
 
