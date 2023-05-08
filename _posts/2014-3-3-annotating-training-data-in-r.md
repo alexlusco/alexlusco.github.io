@@ -1,6 +1,6 @@
 ---
 layout: post
-title: First post
+title: Annotating training data in R
 date: May 7, 2023
 ---
 
@@ -12,7 +12,7 @@ Not having much of experience annotating data, we began to brainstorm ideas for 
 
 Certainly, this could have worked, but it wasn't much fun as a concept, and well... it's [Excel](https://www.reddit.com/r/statistics/comments/3raa8t/why_all_the_hate_towards_excel/). Which brought us to our next idea, that being a *much* cooler set-up using `library(googlesheets4)` and some `library(tidyverse)` packages.
 
-### The idea
+# The idea
 
 What we envisioned was an application that would (1) print one tweet at a time to our screens, (2) ask us a binary question about the tweet (we are building a classifier model, meaning there are only two possible outcomes), and (3) move to the next tweet, repeating steps one and two. 
 
@@ -22,7 +22,7 @@ As it turns out, R has just the tools to do this. All in less than 20 lines of c
 
 Here's how we did it:
 
-#### Step One: Install/load libraries
+# Step One: Install/load libraries
 
 First, you'll need to install/load the four R libraries we used to make the annotation tool. We used `library(googlesheets4)` to store our un-annotated and annotated data, and `library(tibble)`, `library(dplyr)`, and `library(crayon)` to build the annotator function.
 
@@ -37,7 +37,7 @@ First, you'll need to install/load the four R libraries we used to make the anno
   library(crayon)
 ```
 
-#### Step Two: Create a Google Sheet and save your data to it
+# Step Two: Create a Google Sheet and save your data to it
 
 Next, create a Google Sheet and save your data to it. Alternatively, you could use a locally stored file or RStudio's global env for your input and output data. We are using Google Sheets because it allows us to collaborate using the same data stored in the cloud.
 
@@ -49,23 +49,28 @@ For example:
 
 ![](/post/annotating-data_files/annotator-spreadsheet3.png){width=600px height=600px}
 
-#### Step Three: Build the annotator function
+# Step Three: Build the annotator function
 
 Now it's time to build the annotator function. The function starts by reading in the data from both sheets and then using using ```dplyr::anti_join()``` to remove any data that has already been annotated. Next, it uses a for loop to sequence through the rows in the spreadsheet, printing one string at a time (in our case, a tweet), and asking us to determine whether the tweet is or is not an instance of what we are annotating for. 
 
 The interactive component is achieved using base R's ```menu``` function, which asks us to enter a 1 or 2 on our keyboards corresponding to the answer. (Note: you can add more than two options. For example, you might add an 'unsure' option for more ambiguous cases you wish to deal with later.) 
 
-Finally, the function will store the result in a tibble, and append the output to our Google Sheet using ```googlesheets4::sheet_append()```. You'll notice that the function also makes use of ```library(crayon)```. This isn't necessary by any means. We just found that putting the string in a unique colour made it a little easier to distinguish from any surrounding text or console messages. 
+Finally, the function will store the result in a tibble, and append the output to our Google Sheet using `googlesheets4::sheet_append()`. You'll notice that the function also makes use of ```library(crayon)```. This isn't necessary by any means. We just found that putting the string in a unique colour made it a little easier to distinguish from any surrounding text or console messages. 
 
 ```r
 tweetannotate <- function(){
   
-  # Note: you will need to create your own Google Sheet for the code to run (this one is currently set to 'viewer' only)
+  # Note: you will need to create your own Google Sheet for the code to run 
+  # (this one is currently set to 'viewer' only)
   sheet_url = "https://docs.google.com/spreadsheets/d/1xi1tFb5XycUhjf2LWRQuyU1R7bNK2oZnmHoCF5y4Moo/edit?usp=sharing"
 
-  df1 <- read_sheet(sheet_url, sheet = "unannotated") %>% mutate(tweet = as.character(tweet))
+  df1 <- read_sheet(sheet_url, 
+                    sheet = "unannotated") %>% 
+         mutate(tweet = as.character(tweet))
 
-  df2 <- read_sheet(sheet_url, sheet = "annotated") %>% mutate(tweet = as.character(tweet))
+  df2 <- read_sheet(sheet_url, 
+                    sheet = "annotated") %>% 
+         mutate(tweet = as.character(tweet))
 
   df3 <- anti_join(df1, df2, by = "tweet")
 
@@ -76,7 +81,9 @@ tweetannotate <- function(){
   
     cat(crayon::green(tweet))
   
-    answer <- menu(c("Instance of x", "Not an instance of x"), title = "")
+    answer <- menu(c("Instance of x", 
+                     "Not an instance of x"), 
+                     title = "")
   
     output <- tibble(
       username = username,
@@ -93,13 +100,13 @@ tweetannotate <- function(){
 }
 ```
 
-#### Step Five: Let the annotating begin!
+# Step Five: Let the annotating begin!
 
 To run the function and start the annotation process, enter ```tweetannotate()``` into your RStudio console. If you don't want to see the ```library(googlesheets4)``` messages for every entry, you could add another line of code to silence them. We've found that it's handy to have the Google Sheet open alongside or in the background. That way, if you accidentally enter 1 when you meant to enter 2 (or vice versa), you can easily manually correct it.
 
 ![](/post/annotating-data_files/annotate-tweet-video.gif){width=1500px height=1500px}
 
-#### Building on the current application
+# Building on the current application
 
 The function provided above is just a basic template and can be adapted in all kinds of ways. For example, if multiple people are going to be annotating the data, you may want to keep track of who is doing which annotations. This could be achieved by adding another column to the spreadsheet (e.g., 'annotator') and using ```menu``` again at the beginning of the function to get the annotator to select their name or initials from a list.
 
