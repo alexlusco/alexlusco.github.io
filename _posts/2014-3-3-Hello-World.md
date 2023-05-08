@@ -26,7 +26,7 @@ Here's how we did it:
 
 First, you'll need to install/load the four R libraries we used to make the annotation tool. We used `library(googlesheets4)` to store our un-annotated and annotated data, and `library(tibble)`, `library(dplyr)`, and `library(crayon)` to build the annotator function.
 
-```{r message=FALSE, warning=FALSE}
+```
 #install.packages("googlesheets4")
 #install.packages("tibble")
 #install.packages("dplyr")
@@ -57,7 +57,7 @@ The interactive component is achieved using base R's ```menu``` function, which 
 
 Finally, the function will store the result in a tibble, and append the output to our Google Sheet using ```googlesheets4::sheet_append()```. You'll notice that the function also makes use of ```library(crayon)```. This isn't necessary by any means. We just found that putting the string in a unique colour made it a little easier to distinguish from any surrounding text or console messages. 
 
-```{r}
+```
 tweetannotate <- function(){
   
   # Note: you will need to create your own Google Sheet for the code to run (this one is currently set to 'viewer' only)
