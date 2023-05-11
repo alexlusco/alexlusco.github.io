@@ -47,7 +47,7 @@ Once you've written your data into Google Sheets, name this first sheet (here I'
 
 For example:
 
-![](/images/2022-1-22-annotating-training-data-in-r/annotator-spreadsheet3.png){width=600px height=600px}
+![](/images/2022-1-22-annotating-training-data-in-r/annotator-spreadsheet3.png)
 
 ## Step Three: Build the annotator function
 
@@ -98,11 +98,11 @@ Finally, the function will store the result in a tibble, and append the output t
   }
 ```
 
-## Step Five: Let the annotating begin!
+## Step Five: Annotate your heart out
 
 To run the function and start the annotation process, enter `tweetannotate()` into your RStudio console. If you don't want to see the `library(googlesheets4)` messages for every entry, you could add another line of code to silence them. We've found that it's handy to have the Google Sheet open alongside or in the background. That way, if you accidentally enter 1 when you meant to enter 2 (or vice versa), you can easily manually correct it.
 
-![](/images/2022-1-22-annotating-training-data-in-r/annotate-tweet-video.gif){width=1500px height=1500px}
+![](/images/2022-1-22-annotating-training-data-in-r/annotate-tweet-video.gif)
 
 ## Building on the current application
 
