@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Annotating training data in R
-date: May 7, 2023
+date: February 22, 2022
 ---
 
-Some collaborators and I recently started a project analyzing a large amount of tweets we obtained via the [Twitter API](https://developer.twitter.com/en/products/twitter-api/academic-research). To analyze these data, we are planning to train a machine learning model, which means we need training data, which means we need annotations ('ground truth' as its commonly referred to in computer science).
+Some collaborators and I recently started a project analyzing a large amount of tweets we obtained via the Twitter API. To analyze these data, we are planning to train a machine learning model, which means we need training data, which means we need annotations ('ground truth' as its commonly referred to in computer science).
 
 A lot of the work of data annotation for machine learning is done through crowdsourcing platforms like [MTurk](https://www.mturk.com/). In this case, we are doing the annotating ourselves. 
 
@@ -47,7 +47,7 @@ Once you've written your data into Google Sheets, name this first sheet (here I'
 
 For example:
 
-![](/post/annotating-data_files/annotator-spreadsheet3.png){width=600px height=600px}
+![](/images/2022-1-22-annotating-training-data-in-r/annotator-spreadsheet3.png){width=600px height=600px}
 
 ## Step Three: Build the annotator function
 
@@ -102,7 +102,7 @@ Finally, the function will store the result in a tibble, and append the output t
 
 To run the function and start the annotation process, enter `tweetannotate()` into your RStudio console. If you don't want to see the `library(googlesheets4)` messages for every entry, you could add another line of code to silence them. We've found that it's handy to have the Google Sheet open alongside or in the background. That way, if you accidentally enter 1 when you meant to enter 2 (or vice versa), you can easily manually correct it.
 
-![](/post/annotating-data_files/annotate-tweet-video.gif){width=1500px height=1500px}
+![](/images/2022-1-22-annotating-training-data-in-r/annotate-tweet-video.gif){width=1500px height=1500px}
 
 ## Building on the current application
 

@@ -1,14 +1,24 @@
 
-.highlight {
-  background-color: #f6f6f6  ;
+//.highlight {
+  //background-color: #f6f6f6  ;
   //padding: 7px 7px 7px 10px;
   //border: 1px solid #ddd;
-  padding: 20px;
+  //padding: 20px;
   //-moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
   //-webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
   //box-shadow: 3px 3px rgba(0,0,0,0.1);
   //margin: 10px 0 10px 0;
+  //overflow: auto;
+//}
+
+.highlight {
+  background-color: #f6f6f6;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: 10px 0 10px 0;
   overflow: auto;
+  position: relative;
 }
 
 code {
