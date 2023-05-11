@@ -16,16 +16,16 @@ set.seed(123)
 data <- rnorm(10000, mean = 100, sd = 20)
 
 # Calculate the first digit of each number
-first.digits <- as.numeric(substr(abs(data), 1, 1))
+first_digits <- as.numeric(substr(abs(data), 1, 1))
 
 # Calculate the expected frequencies of each first digit
-expected.freqs <- log10(1 + 1 / (1:9))
+expected_freqs <- log10(1 + 1 / (1:9))
 
 # Calculate the observed frequencies of each first digit
-observed.freqs <- table(first.digits) / length(first.digits)
+observed_freqs <- table(first_digits) / length(first_digits)
 
 # Plot the expected and observed frequencies
-barplot(rbind(expected.freqs, observed.freqs),
+barplot(rbind(expected_freqs, observed_freqs),
         names.arg = 1:9, beside = TRUE,
         col = c("#0000FF", "#00FF00"),
         main = "Benford's Law Test",

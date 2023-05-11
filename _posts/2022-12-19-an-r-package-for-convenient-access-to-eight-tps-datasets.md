@@ -1,6 +1,6 @@
 ---
 layout: post
-title: An R package for convenient access to eight TPS datasets
+title: Eight new TPS datasets
 date: December 19, 2022
 ---
 
