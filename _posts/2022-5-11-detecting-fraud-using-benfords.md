@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Detecting fraud using Benford's
-date: February 22, 2022
+date: May 11, 2023
 ---
 
 Benford's Law is a statistical phenomenon that has been found to apply to a wide range of data sets, from stock prices to geographic populations. The law states that in many naturally occurring sets of numerical data, the first digit is more likely to be small (e.g., 1 or 2) than large (e.g., 8 or 9). Crazy, right?
