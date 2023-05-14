@@ -6,7 +6,7 @@ permalink: /research/
 
 ## Books
 
-//2022. Changing of the Guards: Private Influences, Privatization, and Criminal Justice in Canada. UBC Press. (With K. Walby, D. Silva)
+2022. Changing of the Guards: Private Influences, Privatization, and Criminal Justice in Canada. UBC Press. (With K. Walby, D. Silva)
 
 ## Journal articles
 
