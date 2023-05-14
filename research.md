@@ -24,7 +24,7 @@ permalink: /research/
 
 2018\. The police foundation’s rise: Implications of public policing’s dark money. *The British Journal of Criminology*, 58(4), 824-844. (with K. Walby, R.K. Lippert)
 
-2017\. Hannah Arendt and the art of secrecy; or, the fog of Cobra Mist. *International Political Sociology*, 11(1), 5-20. (with. W. Walters)
+2017\. Hannah Arendt and the art of secrecy; or, the fog of Cobra Mist. *International Political Sociology*, 11(1), 5-20. (with W. Walters)
 
 2017\. Criteria for quality in qualitative research and use of freedom of information requests in the social sciences. *Qualitative research*, 17(5), 537-553. (with K. Walby)
 
