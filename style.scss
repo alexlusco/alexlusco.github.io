@@ -235,6 +235,11 @@ nav {
       color: $blue;
     }
   }
+
+  /* Add this code to make the nav bold when the current page is clicked */
+  a.active {
+    font-weight: bold;
+  }
 }
 
 //
