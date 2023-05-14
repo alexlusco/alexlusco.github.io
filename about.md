@@ -14,4 +14,4 @@ Beyond my research, I am an avid rock climber, mountain biker, and backcountry n
 
 ### Contact me
 
-alex [dot] luscombe [at] mail [dot] utoronto [dot] ca
+alex [dot] luscombe [at] utoronto [dot] ca
