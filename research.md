@@ -8,9 +8,14 @@ permalink: /research/
 
 2022\. *Changing of the Guards: Private Influences, Privatization, and Criminal Justice in Canada*. UBC Press. (with K. Walby, D. Silva)
 
+- Accolades: [The Hill Times' Top 100 Best Books in 2022](https://www.hilltimes.com/story/2022/12/19/the-hill-times-list-of-100-best-books-in-2022/355169/)
+- Reviews: [Literary Review of Canada](https://reviewcanada.ca/magazine/2023/06/private-eyes/)
+
 2021\. *Freedom of Information and Social Science Research Design*. Routledge. (with K. Walby)
 
 ## Journal articles
+
+2023\. Access to information research in the digital era. *Canadian Public Administration*. (with J. Duncan)
 
 2022\. Algorithmic thinking in the public interest: navigating technical, legal, and ethical hurdles to web scraping in the social sciences. *Quality & Quantity*, 56(3), 1023-1044. (with K. Dick, K. Walby)
 
