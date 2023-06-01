@@ -15,7 +15,7 @@ permalink: /research/
 
 ## Journal articles
 
-2023\. Access to information research in the digital era. *Canadian Public Administration*. (with J. Duncan)
+2023\. Access to information research in the digital era. *Canadian Public Administration*. (with J. Duncan) https://doi.org/10.1111/capa.12518
 
 2022\. Algorithmic thinking in the public interest: navigating technical, legal, and ethical hurdles to web scraping in the social sciences. *Quality & Quantity*, 56(3), 1023-1044. (with K. Dick, K. Walby)
 
