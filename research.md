@@ -19,7 +19,7 @@ permalink: /research/
 
 2022\. [Algorithmic thinking in the public interest: navigating technical, legal, and ethical hurdles to web scraping in the social sciences](https://doi.org/10.1007/s11135-021-01164-0). *Quality & Quantity*, 56(3), 1023-1044. (with K. Dick, K. Walby)
 
-2022\. [Jumpstarting the justice disciplines: A computational-qualitative approach to collecting and analyzing text and image data in criminology and criminal justice studies](). *Journal of Criminal Justice Education*, 33(2), 151-171. (with J. Duncan, K. Walby)
+2022\. [Jumpstarting the justice disciplines: A computational-qualitative approach to collecting and analyzing text and image data in criminology and criminal justice studies](https://doi.org/10.1080/10511253.2022.2027477). *Journal of Criminal Justice Education*, 33(2), 151-171. (with J. Duncan, K. Walby)
 
 2022\. Evidence of High Policing Pluralization in Canada. Pp. 221-250 in [*Changing of the Guards: Private Influences, Privatization, and Criminal Justice in Canada*](https://www.ubcpress.ca/changing-of-the-guards). UBC Press.
 
