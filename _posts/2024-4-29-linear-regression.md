@@ -12,17 +12,44 @@ Linear regression is based on the concept of fitting a straight line to a set of
 
 The equation of the regression line in simple linear regression (with one predictor variable) is given by:
 
-```latex
-\[ y = mx + b \]
+y = mx + b
 
 Where:
-- \( y \) is the dependent variable (crime rate).
-- \( x \) is the independent variable (predictor, e.g., poverty level).
-- \( m \) is the slope of the line, representing the change in \( y \) for a one-unit change in \( x \).
-- \( b \) is the y-intercept, indicating the value of \( y \) when \( x \) is zero.
-```
+- y is the dependent variable (crime rate).
+- x is the independent variable (predictor, e.g., poverty level).
+- m is the slope of the line, representing the change in y for a one-unit change in x.
+- b is the y-intercept, indicating the value of y when x is zero.
 
-## Step 1: Simulating Example Data
+## Objective: Minimizing Residuals
+
+In linear regression, the goal is to find the values of m and b that minimize the sum of the squared differences between the observed values of y and the values predicted by the regression line for each x. This is known as the least squares criterion.
+
+### Minimizing the Residual Sum of Squares (RSS)
+
+The residual sum of squares (RSS) is defined as:
+
+RSS = ∑ (yi - ŷi)^2
+
+Where:
+- n is the number of observations.
+- yi is the observed value of y for the ith observation.
+- ŷi is the predicted value of y for the ith observation based on the regression line.
+
+## Minimizing RSS: Calculating Coefficients
+
+To minimize RSS and find the optimal values of m and b, calculus is used. The formulas for calculating the coefficients m and b are:
+
+m = (n∑xy - ∑x∑y) / (n∑x^2 - (∑x)^2)
+b = (∑y∑x^2 - ∑x∑xy) / (n∑x^2 - (∑x)^2)
+
+Where:
+- n is the number of observations.
+- ∑x and ∑y are the sum of x and y values, respectively.
+- ∑x^2 and ∑xy are the sum of x^2 and xy values, respectively.
+
+## Linear Regression in R
+
+### Step 1: Simulating Example Data
 
 First, we'll generate synthetic data to represent crime rates and socioeconomic factors. In our example, we'll simulate data for poverty level, education level, population density, and crime rate.
 
@@ -56,7 +83,7 @@ head(crime_data)
 ...
 ```
 
-## Step 2: Performing Linear Regression
+### Step 2: Performing Linear Regression
 Next, we'll use R to perform linear regression and predict crime rates based on socioeconomic factors.
 
 ```r
