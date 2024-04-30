@@ -14,8 +14,6 @@ But if there's one line that jumped out to me in the committee's decision (the p
 
 Researchers everywhere ought to take note of this. Because let's be real: Pruitt is most certainly not the first nor the only researcher to have failed to "keep complete and adequate records" regarding their data collection and analytic procedures etc. etc. Everyone ought to do better in this respect, not just Pruitt. 
 
-If nothing else, an excellent reminder: document, document, document. (And I don't think that applies only to academic researchers... looking at you data journalists!)
-
 
 
 

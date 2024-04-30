@@ -4,16 +4,10 @@ title: Select publications
 permalink: /research/
 ---
 
-## Books
-
 2022\. [*Changing of the Guards: Private Influences, Privatization, and Criminal Justice in Canada*](https://www.ubcpress.ca/changing-of-the-guards). UBC Press. (with K. Walby, D. Silva)
 
 - Accolades: [The Hill Times' Top 100 Best Books in 2022](https://www.hilltimes.com/story/2022/12/19/the-hill-times-list-of-100-best-books-in-2022/355169/)
 - Reviews: [Literary Review of Canada](https://reviewcanada.ca/magazine/2023/06/private-eyes/), [Canadian Law Library Review](https://www.callacbd.ca/resources/Documents/CLLR%2048_1.pdf)
-
-2021\. [*Freedom of Information and Social Science Research Design*](https://www.routledge.com/Freedom-of-Information-and-Social-Science-Research-Design/Walby-Luscombe/p/book/9781138345744). Routledge. (with K. Walby)
-
-## Journal articles
 
 2023\. [Access to information research in the digital era](https://doi.org/10.1111/capa.12518). *Canadian Public Administration*. (with J. Duncan)
 
@@ -31,11 +25,7 @@ permalink: /research/
 
 2017\. [Hannah Arendt and the art of secrecy; or, the fog of Cobra Mist](https://doi.org/10.1093/ips/olw027). *International Political Sociology*, 11(1), 5-20. (with W. Walters)
 
-2017\. [Criteria for quality in qualitative research and use of freedom of information requests in the social sciences](https://doi.org/10.1177/1468794116679726). *Qualitative research*, 17(5), 537-553. (with K. Walby)
-
 2017\. [Gift-giving, disreputable exchange, and the management of donations in a police department](https://doi.org/10.1093/sf/sox063). *Social Forces*, 96(2), 507-528. (with D. Fridman)
 
 2017\. [Brokering access beyond the border and in the wild: Comparing freedom of information law and policy in Canada and the United States](https://doi.org/10.1111/lapo.12080). *Law & Policy*, 39(3), 259-279. (with K. Walby, R.K. Lippert)
-
-2015\. [High policing and access to information](https://doi.org/10.1080/15614263.2014.958487). *Police Practice and Research*, 16(6), 485-498. (with K. Walby)
 
