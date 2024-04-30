@@ -1,7 +1,7 @@
 ---
 layout: page
 title: contact
-permalink: /about/
+permalink: /contact/
 ---
 
 alex [dot] luscombe [at] utoronto [dot] ca
