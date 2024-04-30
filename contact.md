@@ -1,11 +1,7 @@
 ---
 layout: page
-title: About
+title: contact
 permalink: /about/
 ---
-
-Data scientist.
-
-### Contact me
 
 alex [dot] luscombe [at] utoronto [dot] ca
