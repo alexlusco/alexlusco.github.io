@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Annotating training data in R
+title: annotating training data in r
 date: February 22, 2022
 ---
 

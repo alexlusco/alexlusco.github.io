@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Parsing your .pdfs in R
+title: parsing your .pdfs in r
 date: April 10, 2020
 ---
 

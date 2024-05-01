@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Eight new TPS datasets
+title: eight new tps datasets
 date: December 19, 2022
 ---
 
