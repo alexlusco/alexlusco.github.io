@@ -18,7 +18,7 @@ In this post, I'll explore three possible methods, applied on data I simulated (
 
 3. **Residuals.** This method involves training a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the residuals (the difference between the predicted probability and the actual reported value), we can identify officers whose reports consistently differ from what the model predicts, suggesting possible misreporting.
 
-All R code for simulating the data and analyzing it using three methods shared below.
+All R code for simulating the data and analyzing it using the three methods shared below.
 
 ## chi-square test
 
@@ -31,7 +31,7 @@ The color coding is particularly telling: blue points indicate officers for whom
 ## k-means clustering
 ![](/images/2024-05-04-traffic-stops-anomoly-detection/cluster.png) 
 
-Plot visualizing the results of a cluster analysis on the race reporting patterns of police officers, reflecting how often they report 'White' and 'Black' individuals during traffic stops. Each colored dot represents an officer, plotted according to the number of times they have reported stopping 'White' and 'Black' individuals. 
+Plot visualizing the results of a cluster analysis on the race reporting patterns of police officers, reflecting how often they report white and Black individuals during traffic stops. Each colored dot represents an officer, plotted according to the number of times they have reported stopping white and Black individuals. 
 
 The colors indicate different clusters, each representing a group of officers with similar reporting behaviors, which could suggest similar operational areas or potentially shared biases in reporting practices. 
 
@@ -90,7 +90,7 @@ misreport_race <- function(race) {
 traffic_stops$subject_race[traffic_stops$badge_id %in% anomalous_officers & 1:n %in% anomaly_entries] <- 
   sapply(traffic_stops$subject_race[traffic_stops$badge_id %in% anomalous_officers & 1:n %in% anomaly_entries], misreport_race)
 
-# 1. statistical analysis: chi2 test
+# chi2 test
 # calculate observed counts of race reports per officer
 officer_race_counts <- traffic_stops %>%
   group_by(badge_id, subject_race) %>%
@@ -140,11 +140,11 @@ ggplot(observed_and_expected, aes(x = badge_id, y = chi_square_p_value)) +
     min.segment.length = 0.1 # Min length of the segment line
   ) + 
   scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) +  # Colors for significant or not
-  labs(title = "Chi2 Test P-values for Each Officer", x = "Badge ID", y = "P-value") +
+  labs(title = "P-values for each officer", x = "Badge ID", y = "P-value", colour = "p < 0.05") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Adjust x-axis labels for readability
 
-# 2. cluster analysis: k-means clustering
+# 2. k-means clustering
 race_profiles <- dcast(officer_race_counts, badge_id ~ subject_race, value.var = "count", fill = 0)
 
 clusters <- kmeans(scale(race_profiles[,-1]), centers = 5)
@@ -174,13 +174,13 @@ ggplot(race_profiles, aes(x = White, y = Black, color = factor(cluster))) +
   geom_point(aes(size = distance, shape = outlier), alpha = 0.7) +
   scale_size_continuous(range = c(2, 8)) +  # Adjust size range as appropriate
   scale_shape_manual(values = c("Normal" = 16, "Outlier" = 4)) +
-  labs(title = "Cluster of Officer Race Reporting Patterns",
-       x = "Number of Times 'White' Reported", 
-       y = "Number of Times 'Black' Reported") +
+  labs(title = "Cluster of officer race reporting patterns",
+       x = "Number of times white reported", 
+       y = "Number of times Black reported") +
   theme_minimal() +
   theme(legend.position = "right")
 
-# 3. machine learning: Logistic Regression Residuals
+# 3. logistic regression residuals
 traffic_stops$subject_race <- as.factor(traffic_stops$subject_race)
 model <- train(subject_race ~ time_of_day + subject_age + subject_gender + division, data = traffic_stops, method = "multinom", trControl = trainControl(method = "none"))
 predicted_prob <- predict(model, traffic_stops, type = "prob")
