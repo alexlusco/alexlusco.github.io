@@ -126,19 +126,19 @@ observed_and_expected$chi_square_p_value <- sapply(observed_and_expected$chi_squ
 
 # visualize the chi2 test results
 ggplot(observed_and_expected, aes(x = badge_id, y = chi_square_p_value)) +
-  geom_point(aes(color = chi_square_p_value < 0.05), alpha = 0.6) +  # Plot points with color based on significance
+  geom_point(aes(color = chi_square_p_value < 0.05), alpha = 0.6) + 
   geom_text_repel(
     aes(label = ifelse(chi_square_p_value < 0.05, as.character(badge_id), "")),
-    box.padding = 0.35,  # Adjust padding within the text label background box
-    point.padding = 0.5, # Distance from point to text
-    segment.color = 'grey50', # Color of the line connecting text and point
-    size = 3.5,  # Text size, can adjust to fit your specific plot aesthetics
-    min.segment.length = 0.1 # Min length of the segment line
+    box.padding = 0.35, 
+    point.padding = 0.5, 
+    segment.color = 'grey50', 
+    size = 3.5,  
+    min.segment.length = 0.1 
   ) + 
-  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) +  # Colors for significant or not
+  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) +
   labs(title = "P-values for each officer", x = "Badge ID", y = "P-value", colour = "p < 0.05") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Adjust x-axis labels for readability
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  
 
 # 2. k-means clustering
 race_profiles <- dcast(officer_race_counts, badge_id ~ subject_race, value.var = "count", fill = 0)
@@ -168,7 +168,7 @@ race_profiles <- race_profiles %>%
 # plotting with enhancements
 ggplot(race_profiles, aes(x = White, y = Black, color = factor(cluster))) +
   geom_point(aes(size = distance, shape = outlier), alpha = 0.7) +
-  scale_size_continuous(range = c(2, 8)) +  # Adjust size range as appropriate
+  scale_size_continuous(range = c(2, 8)) + 
   scale_shape_manual(values = c("Normal" = 16, "Outlier" = 4)) +
   labs(title = "Cluster of officer race reporting patterns",
        x = "Number of times white reported", 
