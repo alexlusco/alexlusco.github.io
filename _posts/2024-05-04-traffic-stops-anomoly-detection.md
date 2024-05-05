@@ -37,7 +37,7 @@ The colors indicate different clusters, each representing a group of officers wi
 
 The sizes of the dots vary with the distance from the cluster's centroid, larger dots signaling officers whose reporting patterns are more divergent from their group's norm. 
 
-The plot further identifies outliers with red "X" marks, pinpointing officers whose reporting patterns are markedly different from others in their cluster. These outliers could indicate cases where individual officers may be misreporting races more frequently than their peers, either intentionally or due to errors.
+The plot further identifies outliers with "X" marks, pinpointing officers whose reporting patterns are markedly different from others in their cluster. These outliers could indicate cases where individual officers may be misreporting races more frequently than their peers, either intentionally or due to errors.
 
 ## logistic regression residuals
 ![](/images/2024-05-04-traffic-stops-anomoly-detection/regression.png) 
