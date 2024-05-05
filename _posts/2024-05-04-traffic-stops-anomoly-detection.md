@@ -10,7 +10,9 @@ In a recent story by the [San Francisco Chronicle](https://www.sfchronicle.com/c
 
 Such discrepancies not only challenge the integrity of vital databases intended to track racial disparities but also undermine trust between the community and law enforcement. As Henderson noted, the mislabeling of races or entering multiple racial categories to obscure actual demographic data are just some of the ways this misreporting manifests.
 
-This news struck a chord with me, prompting a deeper reflection on the technological and methodological tools available to potentially uncover such discrepancies systematically. Could we enhance the oversight of police conduct by leveraging data science to detect when officers misreport race during traffic stops? In this post, I'll explore three possible methods, applied on data I simulated, that could be employed to analyze traffic stop data, aiming to identify anomalies in how race is reported. Each offers a distinct lens to scrutinize the data for inconsistencies that might indicate misreporting.
+This news struck a chord with me, prompting a deeper reflection on the technological and methodological tools available to potentially uncover such discrepancies systematically. Could we enhance the oversight of police conduct by leveraging data science to detect when officers misreport race during traffic stops? 
+
+In this post, I'll explore three possible methods, applied on data I simulated (code shared below), that could be employed to analyze traffic stop data, aiming to identify anomalies in how race is reported. Each offers a distinct lens to scrutinize the data for inconsistencies that might indicate misreporting.
 
 1. **Chi-Square.** This method tests if the distribution of reported races by each officer is statistically different from the expected distribution based on the overall data. We can use a chi2 test to detect whether the frequency of each race reported by an officer is unusually high or low compared to what would be expected if their reports were distributed similarly to the overall population.
 
@@ -50,7 +52,7 @@ The clustering of residuals across different bands suggests varying degrees of a
 
 Data-driven methodologies to detect anomalies in police race reporting promise a more transparent and accountable policing system. Integrating additional data sources could provide a more nuanced view and improve model accuracy. 
 
-For example, incorporating data about the racial makeup of different police divisions could help control for environmental or demographic variables that influence reporting behaviors. Understanding community demographics can provide essential context that may explain certain reporting patterns without attributing them solely to officer bias or error.
+For example, incorporating data about the racial makeup of communities at the patrol zone level could help control for environmental or demographic variables that influence reporting behaviors. Understanding community demographics can provide essential context that may explain certain reporting patterns without attributing them solely to officer bias or error.
 
 ## code
 ```r
@@ -158,20 +160,20 @@ centroids <- race_profiles %>%
   group_by(cluster) %>%
   summarise(centroid_White = mean(White), centroid_Black = mean(Black))
 
-# Join centroids back to the main data
+# join centroids back to the main data
 race_profiles <- race_profiles %>%
   left_join(centroids, by = "cluster")
 
-# Calculate distance from centroid
+# calculate distance from centroid
 race_profiles <- race_profiles %>%
   mutate(distance = sqrt((White - centroid_White)^2 + (Black - centroid_Black)^2))
 
-# Determine outliers - customize threshold as needed
+# determine outliers - customize threshold as needed
 threshold <- mean(race_profiles$distance) + sd(race_profiles$distance) * 2
 race_profiles <- race_profiles %>%
   mutate(outlier = ifelse(distance > threshold, "Outlier", "Normal"))
 
-# Plotting with enhancements
+# plotting with enhancements
 ggplot(race_profiles, aes(x = White, y = Black, color = factor(cluster))) +
   geom_point(aes(size = distance, shape = outlier), alpha = 0.7) +
   scale_size_continuous(range = c(2, 8)) +  # Adjust size range as appropriate
@@ -188,7 +190,7 @@ model <- train(subject_race ~ time_of_day + subject_age + subject_gender + divis
 predicted_prob <- predict(model, traffic_stops, type = "prob")
 residuals <- rowSums((model.matrix(~ subject_race - 1, traffic_stops) - predicted_prob)^2)
 
-# Visualizing residuals
+# visualizing residuals
 ggplot(traffic_stops, aes(x = badge_id, y = residuals)) +
   geom_jitter(alpha = 0.4) +
   labs(title = "Residuals from logistic regression by officer", x = "Badge ID", y = "Residuals")
