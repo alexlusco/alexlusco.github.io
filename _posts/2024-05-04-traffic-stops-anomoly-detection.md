@@ -47,6 +47,8 @@ The residuals from a logistic regression model designed to predict the race-base
 We can see the final result is separated into "bands". The clustering of residuals across different bands suggests varying degrees of alignment between predicted and actual race reporting. Officers whose residuals fall in the upper bands might be entering race-based data in a manner inconsistent with predictive factors, hinting at potential biases to be inspected further. The very dense band closer to the x-axis, where residuals are smaller, indicates officers whose reporting aligns most closely with the model’s predictions, i.e., less anomalous.
 
 ## code
+
+### required libraries and data simulation
 ```r
 # load necessary libraries
 library(dplyr)
@@ -85,7 +87,10 @@ misreport_race <- function(race) {
 # apply anomalies to dataset
 traffic_stops$subject_race[traffic_stops$badge_id %in% anomalous_officers & 1:n %in% anomaly_entries] <- 
   sapply(traffic_stops$subject_race[traffic_stops$badge_id %in% anomalous_officers & 1:n %in% anomaly_entries], misreport_race)
+```
 
+### chi-square test
+```r
 # chi2 test
 # calculate observed counts of race reports per officer
 officer_race_counts <- traffic_stops %>%
@@ -138,8 +143,11 @@ ggplot(observed_and_expected, aes(x = badge_id, y = chi_square_p_value)) +
   scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) +
   labs(title = "P-values for each officer", x = "Badge ID", y = "P-value", colour = "p < 0.05") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
 
+### k-means clustering
+```r
 # 2. k-means clustering
 race_profiles <- dcast(officer_race_counts, badge_id ~ subject_race, value.var = "count", fill = 0)
 
@@ -175,7 +183,9 @@ ggplot(race_profiles, aes(x = White, y = Black, color = factor(cluster))) +
        y = "Number of times Black reported") +
   theme_minimal() +
   theme(legend.position = "right")
-
+```
+### residual analysis
+```r
 # 3. logistic regression residuals
 traffic_stops$subject_race <- as.factor(traffic_stops$subject_race)
 model <- train(subject_race ~ time_of_day + subject_age + subject_gender + division, data = traffic_stops, method = "multinom", trControl = trainControl(method = "none"))
