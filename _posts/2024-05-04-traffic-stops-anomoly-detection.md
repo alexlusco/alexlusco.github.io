@@ -48,6 +48,8 @@ The clustering of residuals across different bands suggests varying degrees of a
 
 ## final thoughts
 
+> Nodody's gonna know... nobody's gonna know... they're gonna know... how could they know...
+
 Data-driven methodologies to detect anomalies in police race reporting promise a more transparent and accountable policing system. Integrating additional data sources could provide a more nuanced view and improve model accuracy.
 
 ## code
