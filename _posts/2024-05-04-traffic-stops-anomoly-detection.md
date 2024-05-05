@@ -50,9 +50,7 @@ The clustering of residuals across different bands suggests varying degrees of a
 
 ## final thoughts
 
-Data-driven methodologies to detect anomalies in police race reporting promise a more transparent and accountable policing system. Integrating additional data sources could provide a more nuanced view and improve model accuracy. 
-
-For example, incorporating data about the racial makeup of communities at the patrol zone level could help control for environmental or demographic variables that influence reporting behaviors. Understanding community demographics can provide essential context that may explain certain reporting patterns without attributing them solely to officer bias or error.
+Data-driven methodologies to detect anomalies in police race reporting promise a more transparent and accountable policing system. Integrating additional data sources could provide a more nuanced view and improve model accuracy.
 
 ## code
 ```r
