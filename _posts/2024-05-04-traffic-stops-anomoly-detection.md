@@ -16,7 +16,7 @@ In this post, I'll explore three possible methods, applied on data I simulated (
 
 2. **K-means.** Groups data into clusters based on feature similarity. We can cluster officers based on the proportions of races they report. Outliers might suggest anomalous behavior, suggesting consistently different reporting patterns from their peers.
 
-3. **Residuals.** Trains a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the difference between the predicted probability and the actual reported value (the residual), we can identify officers whose reports consistently differ from what the model predicts.
+3. **Residuals.** Trains a logistic regression model to predict the race of a subject based on other known features associated with the event (e.g., time of day, subject age, subject gender). By examining the difference between the predicted probability and the actual reported value (the residual), we can identify officers whose reports consistently differ from what the model predicts.
 
 All R code for simulating the data and analyzing it using the three methods shared below.
 
@@ -26,7 +26,7 @@ All R code for simulating the data and analyzing it using the three methods shar
 
 Plot displaying the results of a Chi-square test applied to the race reporting data of police officers, aimed at identifying those whose reporting patterns significantly differ from expected norms. Each point on the graph represents an officer, plotted against their badge ID on the x-axis and the corresponding p-value from the Chi-square test on the y-axis. 
 
-The color coding is particularly telling: blue points indicate officers for whom the test did not find statistically significant anomalies in race reporting (p-value >= 0.05), suggesting their data aligns well with the overall distribution. Conversely, red points highlight officers (Badge IDs 1022 and 1041 in this case) whose reporting was found to be significantly different (p-value < 0.05), hinting at potential discrepancies in how they report the race of individuals during traffic stops.
+The color coding is particularly telling. Blue points indicate officers for whom the test did not find statistically significant anomalies in race reporting (p-value >= 0.05), suggesting their data aligns well with the overall distribution. Red points highlight officers (Badge IDs 1022 and 1041 in this case) whose reporting was found to be significantly different (p-value < 0.05), suggestive of posssible discrepancies in how they report the race of individuals during traffic stops.
 
 ## k-means clustering
 ![](/images/2024-05-04-traffic-stops-anomoly-detection/cluster.png) 
