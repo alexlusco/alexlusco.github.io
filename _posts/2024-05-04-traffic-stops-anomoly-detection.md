@@ -4,19 +4,19 @@ title: detecting anomalies in race reporting during traffic stops
 date: May 04, 2024
 ---
 
-In a recent story by the [San Francisco Chronicle](https://www.sfchronicle.com/crime/article/san-francisco-police-stops-race-18367337.php), Paul Henderson, the Executive Director of the Department of Police Accountability, highlighted a troubling issue within the SFPD: the misreporting of race data during traffic and pedestrian stops. 
+In a recent story by the [San Francisco Chronicle](https://www.sfchronicle.com/crime/article/san-francisco-police-stops-race-18367337.php), the ED of San Francisco's Department of Police Accountability, highlighted a troubling issue within the city's police department: the misreporting of race data during traffic and pedestrian stops. 
 
-Such discrepancies not only challenge the integrity of vital databases intended to track racial disparities but also undermine trust between the community and law enforcement. As Henderson noted, the mislabeling of races or entering multiple racial categories to obscure actual demographic data are just some of the ways this misreporting manifests.
+Such discrepancies are a serious challenge to the integrity of vital databases intended to track biased policing. It also undermines public trust. As the article notes, the mislabeling of races or entering multiple racial categories to obscure actual demographic data are just some of the ways this misreporting manifests.
 
-This news struck a chord with me, prompting a deeper reflection on the technological and methodological tools available to potentially uncover such discrepancies systematically. Could we enhance the oversight of police conduct by leveraging data science to detect when officers misreport race during traffic stops? 
+Can quantitative analysis help us uncover such discrepancies systematically? Could we enhance oversight of police conduct by leveraging data science to detect when officers misreport race during traffic stops? 
 
-In this post, I'll explore three possible methods, applied on data I simulated (code shared below), that could be employed to analyze traffic stop data, aiming to identify anomalies in how race is reported. Each offers a distinct lens to scrutinize the data for inconsistencies that might indicate misreporting.
+In this post, I'll explore three possible methods, applied on data I simulated (code shared below), that could be used to do anomaly detection on police traffic stop data. Each offers a distinct lens to scrutinize the data for concerning inconsistencies.
 
-1. **Chi-Square.** This method tests if the distribution of reported races by each officer is statistically different from the expected distribution based on the overall data. We can use a chi2 test to detect whether the frequency of each race reported by an officer is unusually high or low compared to what would be expected if their reports were distributed similarly to the overall population.
+1. **Chi-Square.** Tests if the distribution of reported races by each officer is statistically different from the distribution we would expect to see based on the overall data. We can use a chi2 test to detect whether the frequency of each race reported by an officer is unusually high or unusually low compared to what would be expected if their reports were distributed similarly to the overall population.
 
-2. **K-means.** K-means clustering groups data into clusters based on feature similarities. In our case, we can cluster officers based on the proportions of races they report. Outliers in this clustering might suggest anomalous behavior, such as consistently different reporting patterns from their peers.
+2. **K-means.** Groups data into clusters based on feature similarity. We can cluster officers based on the proportions of races they report. Outliers might suggest anomalous behavior, suggesting consistently different reporting patterns from their peers.
 
-3. **Residuals.** This method involves training a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the residuals (the difference between the predicted probability and the actual reported value), we can identify officers whose reports consistently differ from what the model predicts, suggesting possible misreporting.
+3. **Residuals.** Trains a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the difference between the predicted probability and the actual reported value (the residual), we can identify officers whose reports consistently differ from what the model predicts.
 
 All R code for simulating the data and analyzing it using the three methods shared below.
 
