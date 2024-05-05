@@ -20,8 +20,7 @@ These findings are crucial for departments seeking to ensure accurate and unbias
 
 ## 1. statistical analysis: chi-square test
 
-| ![](/images/2024-05-04-traffic-stops-anomoly-detection/chi2.png) | 
-|:--:| 
+| ![](/images/2024-05-04-traffic-stops-anomoly-detection/chi2.png) |
 | *Plot displaying the results of a Chi-square test applied to the race reporting data of police officers, aimed at identifying those whose reporting patterns significantly differ from expected norms. Each point on the graph represents an officer, plotted against their badge ID on the x-axis and the corresponding p-value from the Chi-square test on the y-axis. The color coding is particularly telling: blue points indicate officers for whom the test did not find statistically significant anomalies in race reporting (p-value >= 0.05), suggesting their data aligns well with the overall distribution. Conversely, red points highlight officers (Badge IDs 1022 and 1041 in this case) whose reporting was found to be significantly different (p-value < 0.05), hinting at potential discrepancies in how they report the race of individuals during traffic stops.* |
 
 ## 2. cluster analysis: k-mans clustering
@@ -29,7 +28,8 @@ These findings are crucial for departments seeking to ensure accurate and unbias
 | *Plot visualizing the results of a cluster analysis on the race reporting patterns of police officers, reflecting how often they report 'White' and 'Black' individuals during traffic stops. Each colored dot represents an officer, plotted according to the number of times they have reported stopping 'White' and 'Black' individuals. The colors indicate different clusters, each representing a group of officers with similar reporting behaviors, which could suggest similar operational areas or potentially shared biases in reporting practices. The sizes of the dots vary with the distance from the cluster's centroid, larger dots signaling officers whose reporting patterns are more divergent from their group's norm. The plot further identifies outliers with red "X" marks, pinpointing officers whose reporting patterns are markedly different from others in their cluster. These outliers could indicate cases where individual officers may be misreporting races more frequently than their peers, either intentionally or due to errors.* |
 
 ## 3. machine learning: logistic regression residuals
-| ![](/images/2024-05-04-traffic-stops-anomoly-detection/regression.png) | 
+| ![](/images/2024-05-04-traffic-stops-anomoly-detection/regression.png) |
+
 | *Plot repressenting the residuals from a logistic regression model designed to predict the races reported by officers based on variables unrelated to race, such as time of day, age, and gender of subjects. Each point on the graph corresponds to an officer, charted by their badge ID on the x-axis and the residual value on the y-axis. Residuals measure the difference between the actual reported races and those predicted by the model; larger residuals indicate a greater discrepancy between expected and reported outcomes. The clustering of residuals across different bands suggests varying degrees of alignment between predicted and actual race reporting. Officers whose residuals fall in the upper bands might be reporting race in a manner inconsistent with predictive factors, hinting at potential biases or errors in reporting. Conversely, the dense band closer to the lower axis, where residuals are smaller, indicates officers whose reporting aligns closely with the model’s predictions, suggesting accuracy and consistency in their racial reporting.* |
 
 ## final thoughts
