@@ -16,7 +16,7 @@ In this post, I'll explore three possible methods, applied on data I simulated (
 
 2. **K-means.** K-means clustering groups data into clusters based on feature similarities. In our case, we can cluster officers based on the proportions of races they report. Outliers in this clustering might suggest anomalous behavior, such as consistently different reporting patterns from their peers.
 
-3. **Residuals.** Logistic regression residuals. This method involves training a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the residuals (the difference between the predicted probability and the actual reported value), we can identify officers whose reports consistently differ from what the model predicts, suggesting possible misreporting.
+3. **Residuals.** This method involves training a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the residuals (the difference between the predicted probability and the actual reported value), we can identify officers whose reports consistently differ from what the model predicts, suggesting possible misreporting.
 
 All R code for simulating the data and analyzing it using three methods shared below.
 
