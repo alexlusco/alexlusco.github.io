@@ -1,6 +1,6 @@
 ---
 layout: post
-title: detecting anomalies in race reporting during traffic stops
+title: three techniques for detecting anomalies in officers' race-based data reporting during traffic and pedestrian stops
 date: May 04, 2024
 ---
 
