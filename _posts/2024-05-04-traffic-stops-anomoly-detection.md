@@ -4,8 +4,6 @@ title: detecting anomalies in race reporting during traffic stops
 date: May 04, 2024
 ---
 
-> "Nobody's gonna know... nobody's gonna know... they're gonna know... how would they know..." -TikTok
-
 In a recent story by the [San Francisco Chronicle](https://www.sfchronicle.com/crime/article/san-francisco-police-stops-race-18367337.php), Paul Henderson, the Executive Director of the Department of Police Accountability, highlighted a troubling issue within the SFPD: the misreporting of race data during traffic and pedestrian stops. 
 
 Such discrepancies not only challenge the integrity of vital databases intended to track racial disparities but also undermine trust between the community and law enforcement. As Henderson noted, the mislabeling of races or entering multiple racial categories to obscure actual demographic data are just some of the ways this misreporting manifests.
