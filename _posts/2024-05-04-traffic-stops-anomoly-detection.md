@@ -18,33 +18,39 @@ This news struck a chord with me, prompting a deeper reflection on the technolog
 
 3. **Residuals.** Logistic regression residuals. This method involves training a logistic regression model to predict the race of a subject based on non-racial features (e.g., time of day, age, gender). By examining the residuals (the difference between the predicted probability and the actual reported value), we can identify officers whose reports consistently differ from what the model predicts, suggesting possible misreporting.
 
-These findings are crucial for departments seeking to ensure accurate and unbiased reporting. By identifying outliers through statistical methods, departments can target specific areas or officers for further training, review, and possibly even reevaluation of their data entry practices, ensuring that policy decisions are informed by reliable and fair data collection.
-
 All R code for simulating the data and analyzing it using three methods shared below.
 
 ## chi-square test
 
 ![](/images/2024-05-04-traffic-stops-anomoly-detection/chi2.png)
 
-Plot displaying the results of a Chi-square test applied to the race reporting data of police officers, aimed at identifying those whose reporting patterns significantly differ from expected norms. Each point on the graph represents an officer, plotted against their badge ID on the x-axis and the corresponding p-value from the Chi-square test on the y-axis. The color coding is particularly telling: blue points indicate officers for whom the test did not find statistically significant anomalies in race reporting (p-value >= 0.05), suggesting their data aligns well with the overall distribution. Conversely, red points highlight officers (Badge IDs 1022 and 1041 in this case) whose reporting was found to be significantly different (p-value < 0.05), hinting at potential discrepancies in how they report the race of individuals during traffic stops.
+Plot displaying the results of a Chi-square test applied to the race reporting data of police officers, aimed at identifying those whose reporting patterns significantly differ from expected norms. Each point on the graph represents an officer, plotted against their badge ID on the x-axis and the corresponding p-value from the Chi-square test on the y-axis. 
+
+The color coding is particularly telling: blue points indicate officers for whom the test did not find statistically significant anomalies in race reporting (p-value >= 0.05), suggesting their data aligns well with the overall distribution. Conversely, red points highlight officers (Badge IDs 1022 and 1041 in this case) whose reporting was found to be significantly different (p-value < 0.05), hinting at potential discrepancies in how they report the race of individuals during traffic stops.
 
 ## k-means clustering
 ![](/images/2024-05-04-traffic-stops-anomoly-detection/cluster.png) 
 
-Plot visualizing the results of a cluster analysis on the race reporting patterns of police officers, reflecting how often they report 'White' and 'Black' individuals during traffic stops. Each colored dot represents an officer, plotted according to the number of times they have reported stopping 'White' and 'Black' individuals. The colors indicate different clusters, each representing a group of officers with similar reporting behaviors, which could suggest similar operational areas or potentially shared biases in reporting practices. The sizes of the dots vary with the distance from the cluster's centroid, larger dots signaling officers whose reporting patterns are more divergent from their group's norm. The plot further identifies outliers with red "X" marks, pinpointing officers whose reporting patterns are markedly different from others in their cluster. These outliers could indicate cases where individual officers may be misreporting races more frequently than their peers, either intentionally or due to errors.
+Plot visualizing the results of a cluster analysis on the race reporting patterns of police officers, reflecting how often they report 'White' and 'Black' individuals during traffic stops. Each colored dot represents an officer, plotted according to the number of times they have reported stopping 'White' and 'Black' individuals. 
+
+The colors indicate different clusters, each representing a group of officers with similar reporting behaviors, which could suggest similar operational areas or potentially shared biases in reporting practices. 
+
+The sizes of the dots vary with the distance from the cluster's centroid, larger dots signaling officers whose reporting patterns are more divergent from their group's norm. 
+
+The plot further identifies outliers with red "X" marks, pinpointing officers whose reporting patterns are markedly different from others in their cluster. These outliers could indicate cases where individual officers may be misreporting races more frequently than their peers, either intentionally or due to errors.
 
 ## logistic regression residuals
 ![](/images/2024-05-04-traffic-stops-anomoly-detection/regression.png) 
 
-Plot repressenting the residuals from a logistic regression model designed to predict the races reported by officers based on variables unrelated to race, such as time of day, age, and gender of subjects. Each point on the graph corresponds to an officer, charted by their badge ID on the x-axis and the residual value on the y-axis. Residuals measure the difference between the actual reported races and those predicted by the model; larger residuals indicate a greater discrepancy between expected and reported outcomes. The clustering of residuals across different bands suggests varying degrees of alignment between predicted and actual race reporting. Officers whose residuals fall in the upper bands might be reporting race in a manner inconsistent with predictive factors, hinting at potential biases or errors in reporting. Conversely, the dense band closer to the lower axis, where residuals are smaller, indicates officers whose reporting aligns closely with the model’s predictions, suggesting accuracy and consistency in their racial reporting.
+Plot repressenting the residuals from a logistic regression model designed to predict the races reported by officers based on variables unrelated to race, such as time of day, age, and gender of subjects. Each point on the graph corresponds to an officer, charted by their badge ID on the x-axis and the residual value on the y-axis. Residuals measure the difference between the actual reported races and those predicted by the model; larger residuals indicate a greater discrepancy between expected and reported outcomes. 
+
+The clustering of residuals across different bands suggests varying degrees of alignment between predicted and actual race reporting. Officers whose residuals fall in the upper bands might be reporting race in a manner inconsistent with predictive factors, hinting at potential biases or errors in reporting. Conversely, the dense band closer to the lower axis, where residuals are smaller, indicates officers whose reporting aligns closely with the model’s predictions, suggesting accuracy and consistency in their racial reporting.
 
 ## final thoughts
 
-The exploration of data-driven methodologies to detect anomalies in police race reporting promises to refine our understanding and enhance oversight. This approach not only enables the identification of discrepancies but also lays the groundwork for a more transparent and accountable policing system. However, like all models, our methods are not without limitations. The effectiveness of statistical tests, clustering, and logistic regression models heavily relies on the quality and breadth of the data available. Misclassifications and the inherent biases in the data collection processes can skew results and lead to false positives or negatives in anomaly detection.
+Data-driven methodologies to detect anomalies in police race reporting promise a more transparent and accountable policing system. Integrating additional data sources could provide a more nuanced view and improve model accuracy. 
 
-To overcome these limitations, integrating additional data sources could provide a more nuanced view and improve model accuracy. For example, incorporating data about the racial makeup of different police divisions could help control for environmental or demographic variables that influence reporting behaviors. Understanding community demographics can provide essential context that may explain certain reporting patterns without attributing them solely to officer bias or error.
-
-Moreover, expanding our datasets to include longitudinal data could allow us to track changes over time, providing insights into the effectiveness of policy interventions and training programs. Social media and public sentiment analysis could also be included to gauge community reactions to policing and perceived fairness, potentially serving as an indirect measure of public trust.
+For example, incorporating data about the racial makeup of different police divisions could help control for environmental or demographic variables that influence reporting behaviors. Understanding community demographics can provide essential context that may explain certain reporting patterns without attributing them solely to officer bias or error.
 
 ## code
 ```r
