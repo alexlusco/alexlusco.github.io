@@ -95,7 +95,7 @@ traffic_stops$subject_race[traffic_stops$badge_id %in% anomalous_officers & 1:n 
 # calculate observed counts of race reports per officer
 officer_race_counts <- traffic_stops %>%
   group_by(badge_id, subject_race) %>%
-  summarise(count = n(), .groups = "drop"")
+  summarise(count = n(), .groups = "drop")
 
 # convert to wide format to facilitate calculations
 wide_race_counts <- pivot_wider(officer_race_counts, names_from = subject_race, values_from = count, values_fill = list(count = 0))
