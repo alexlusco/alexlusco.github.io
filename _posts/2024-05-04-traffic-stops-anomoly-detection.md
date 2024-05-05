@@ -46,12 +46,6 @@ Plot repressenting the residuals from a logistic regression model designed to pr
 
 The clustering of residuals across different bands suggests varying degrees of alignment between predicted and actual race reporting. Officers whose residuals fall in the upper bands might be reporting race in a manner inconsistent with predictive factors, hinting at potential biases or errors in reporting. Conversely, the dense band closer to the lower axis, where residuals are smaller, indicates officers whose reporting aligns closely with the model’s predictions, suggesting accuracy and consistency in their racial reporting.
 
-## final thoughts
-
-> Nodody's gonna know... nobody's gonna know... they're gonna know... how could they know...
-
-Data-driven methodologies to detect anomalies in police race reporting promise a more transparent and accountable policing system. Integrating additional data sources could provide a more nuanced view and improve model accuracy.
-
 ## code
 ```r
 # load necessary libraries
