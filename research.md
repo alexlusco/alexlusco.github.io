@@ -17,9 +17,16 @@ permalink: /research/
 
 2022\. [Jumpstarting the justice disciplines: A computational-qualitative approach to collecting and analyzing text and image data in criminology and criminal justice studies](https://doi.org/10.1080/10511253.2022.2027477). *Journal of Criminal Justice Education*, 33(2), 151-171. (with J. Duncan, K. Walby)
 
+- Supplement: [https://alexlusco.github.io/jsjd-supplement/](https://alexlusco.github.io/jsjd-supplement/)
+- OSF preprint: [https://osf.io/preprints/socarxiv/4nhd6](https://osf.io/preprints/socarxiv/4nhd6)
+
 2022\. Evidence of High Policing Pluralization in Canada. Pp. 221-250 in [*Changing of the Guards: Private Influences, Privatization, and Criminal Justice in Canada*](https://www.ubcpress.ca/changing-of-the-guards). UBC Press.
 
 2021\. [Race, cannabis and the Canadian war on drugs: An examination of cannabis arrest data by race in five cities](https://doi.org/10.1016/j.drugpo.2020.102937). *International Journal of Drug Policy*, 91. (with A. Owusu-Bempah)
+
+2020\. [Policing the pandemic: Tracking the policing of COVID-19 across Canada](https://osf.io/preprints/socarxiv/9pn27). *SocArXiv*. (with A. McClelland)
+
+- Project page: [https://www.policingthepandemic.ca/](https://www.policingthepandemic.ca/)
 
 2018\. [Deception declassified: The social organisation of cover storying in a secret intelligence operation](https://doi.org/10.1177/0038038516657949). *Sociology*, 52(2), 400-415.
 
