@@ -1,6 +1,6 @@
 ---
 layout: post
-title: parsing your .pdfs in r
+title: parsing your pdfs in r
 date: April 10, 2020
 ---
 
@@ -10,7 +10,7 @@ One way to deal with this problem is to use what's called regular expressions, o
 
 At the higheset level of abstraction, a regular expression is a predefined sequence of characters that matches a particular pattern in your data. Combined with string-searching algorithms, regex can be used to search through documents, detect, and extract particular parts you are interested in.
 
-## Read your pdf article(s) into R using pdftools 
+## read your pdf article(s) into r using pdftools 
 
 Let's start by reading in a .pdf document - a copy of a recent news editorial on COVID-19 and inequality obtained from ProQuest - using the `pdftools` library.
 
@@ -32,7 +32,7 @@ article <- lapply(article_path, pdf_text)
 article <- as.character(article)
 ```
 
-# Find the information you want to extract
+# find the information you want to extract
 
 Next let's take a look at the original document and get a sense of how it is structured and what kinds of information it contains. 
 
@@ -41,7 +41,7 @@ Next let's take a look at the original document and get a sense of how it is str
 
 Looking at the original document, let's say we are interested in the following three elements: (1) the full text of the article; (2) the title of the publisher; (3) the date the article was published; and (4) the language the article was published in. 
 
-### Write a search/extraction function
+### write a search/extraction function
 Now let's say we want to extract this information from our document (or large list of documents structured in the same way), and store each of the four items in a different column of a dataframe. 
 
 To achieve this, we can write a function in R that combines some simple regex with a search/information extraction algorithm. For our search/extraction algorithm, we'll make use of two functions from the `stringr` library. The first, `str_trim`, removes whitespace from the start and end of the information we are extracting. The second, `str_extract`, will search our document for any information that matches our regex pattern and extract it. 
@@ -87,7 +87,7 @@ While this might seem a bit strange and hard to wrap your head around at first, 
 
 When writing your own regular expressions, it's a really useful exercise to first test them using a regular expression tester like this [regexr.com](https://regexr.com/), which I rely on heavily. Regular expression [cheat sheets](https://www.rexegg.com/regex-quickstart.html) are also very useful to have on hand when working in regex.
 
-## Apply your function to your article
+## apply your function to your article
 
 To apply our function to our article, saving the results as a dataframe, we can use a function called `map_dfr`, which also requires that we have the `dplyr` library installed. 
 

@@ -12,7 +12,7 @@ Not having much of experience annotating data, we began to brainstorm ideas for 
 
 Certainly, this could have worked, but it wasn't much fun as a concept. Which brought us to our next idea, that being a set-up using `library(googlesheets4)` and some `library(tidyverse)` packages in R.
 
-## The idea
+## the idea
 
 What we envisioned was an application that would (1) print one tweet at a time to our screens, (2) ask us a binary question about the tweet (we are building a classifier model, meaning there are only two possible outcomes), and (3) move to the next tweet, repeating steps one and two. 
 
@@ -22,7 +22,7 @@ As it turns out, R has just the tools to do this. All in less than 20 lines of c
 
 Here's how we did it:
 
-## Step One: Install/load libraries
+## step one
 
 First, you'll need to install/load the four R libraries we used to make the annotation tool. We used `library(googlesheets4)` to store our un-annotated and annotated data, and `library(tibble)`, `library(dplyr)`, and `library(crayon)` to build the annotator function.
 
@@ -33,7 +33,7 @@ library(dplyr) #install.packages("dplyr")
 library(crayon) #install.packages("crayon")
 ```
 
-## Step Two: Create a Google Sheet and save your data to it
+## step two
 
 Next, create a Google Sheet and save your data to it. Alternatively, you could use a locally stored file or RStudio's global env for your input and output data. We are using Google Sheets because it allows us to collaborate using the same data stored in the cloud.
 
@@ -45,7 +45,7 @@ For example:
 
 ![](/images/2022-1-22-annotating-training-data-in-r/annotator-spreadsheet3.png)
 
-## Step Three: Build the annotator function
+## step four
 
 Now it's time to build the annotator function. The function starts by reading in the data from both sheets and then using using `dplyr::anti_join()` to remove any data that has already been annotated. Next, it uses a for loop to sequence through the rows in the spreadsheet, printing one string at a time (in our case, a tweet), and asking us to determine whether the tweet is or is not an instance of what we are annotating for. 
 
@@ -94,13 +94,13 @@ tweetannotate <- function(){
 }
 ```
 
-## Step Five: Annotate your heart out
+## step five
 
 To run the function and start the annotation process, enter `tweetannotate()` into your RStudio console. If you don't want to see the `library(googlesheets4)` messages for every entry, you could add another line of code to silence them. We've found that it's handy to have the Google Sheet open alongside or in the background. That way, if you accidentally enter 1 when you meant to enter 2 (or vice versa), you can easily manually correct it.
 
 ![](/images/2022-1-22-annotating-training-data-in-r/annotate-tweet-video.gif)
 
-## Building on the current application
+## building on the current application
 
 The function provided above is just a basic template and can be adapted in all kinds of ways. For example, if multiple people are going to be annotating the data, you may want to keep track of who is doing which annotations. This could be achieved by adding another column to the spreadsheet (e.g., 'annotator') and using `menu` again at the beginning of the function to get the annotator to select their name or initials from a list.
 
