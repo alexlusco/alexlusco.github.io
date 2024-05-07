@@ -4,13 +4,16 @@ title: predicting fraud using financial statements
 date: May 06, 2024
 ---
 
-Discovered a dataset on [Kaggle](https://www.kaggle.com/datasets/amitkedia/financial-statement-fraud-data?resource=download) with financial filings from 170 companies, half fradulent the other not. I built an NLP model in R that processes the text from the "Fillings" column using vectorization to capture the key textual features and then applying logistic regression for classification into fraudulent/not fraudulent. Accuracy 79% (50-50 balanced dataset). Not terrible for a baseline model.
+Discovered a dataset on [Kaggle](https://www.kaggle.com/datasets/amitkedia/financial-statement-fraud-data?resource=download) with financial filings from 170 companies, half fradulent the other not. I built an NLP model in R that processes the text from the "Fillings" column using vectorization to capture the key textual features and applies logistic regression for classification into fraudulent/not fraudulent. Accuracy 79% (50-50 balanced dataset). Not terrible for a baseline model.
 
-             Metric     Value
-Accuracy   Accuracy 0.7941176
-Precision Precision 0.8125000
-Recall       Recall 0.7647059
-F1               F1 0.7878788
+Something I will return to in the future, maybe. 
+
+| Metric    | Value     |
+|-----------|-----------|
+| Accuracy  | 0.7941176 |
+| Precision | 0.8125000 |
+| Recall    | 0.7647059 |
+| F1        | 0.7878788 |
 
 ![](/images/2024-05-06-detecting-financial-fraud/plot.png)
 
