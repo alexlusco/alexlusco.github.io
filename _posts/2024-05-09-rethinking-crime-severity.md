@@ -10,9 +10,8 @@ date: May 06, 2024
 
 Let's summarize this in formal math:
 
-\[
-\text{PRCSI} = \left( \frac{\sum_{i} q_{i,t} \cdot w_{i,t}}{\text{pop}_t} \right) \div \left( \frac{\sum_{i} q_{i,b} \cdot w_{i,b}}{\text{pop}_b} \right) \times 100
-\]
+$$ \text{PRCSI} = \left( \frac{\sum_{i} q_{i,t} \cdot w_{i,t}}{\text{pop}_t} \right) \div \left( \frac{\sum_{i} q_{i,b} \cdot w_{i,b}}{\text{pop}_b} \right) \times 100
+$$
 
 Where,
 - \( q_{i,t} \) represents the number of offences of type \( i \) in the current time period \( t \).
