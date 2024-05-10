@@ -13,13 +13,14 @@ Let's summarize this in formal math:
 $$ \text{PRCSI} = \left( \frac{\sum_{i} q_{i,t} \cdot w_{i,t}}{\text{pop}_t} \right) \div \left( \frac{\sum_{i} q_{i,b} \cdot w_{i,b}}{\text{pop}_b} \right) \times 100 $$
 
 Where,
-\( q_{i,t} \) represents the number of offences of type \( i \) in the current time period \( t \). \\
-\( w_{i,t} \)represents the weight assigned to offence type \( i \) in time period \( t \).\\ 
-\( \text{pop}_t \) represents the population at time period \( t \).\\
-\( q_{i,b} \) and \( w_{i,b} \) represent the number of offences and the weights in the base year \( b \).\\
-\( \text{pop}_b \) is the population in the base year \( b \).\\
+Where,
+- $$ q_{i,t} $$ represents the number of offences of type $$ i $$ in the current time period $$ t $$.
+- $$ w_{i,t} $$ represents the weight assigned to offence type $$ i $$ in time period $$ t $$.
+- $$ \text{pop}_t $$ represents the population at time period $$ t $$.
+- $$ q_{i,b} $$ and $$ w_{i,b} $$ represent the number of offences and the weights in the base year $$ b $$.
+- $$ \text{pop}_b $$ is the population in the base year $$ b $$.
 
-The *weights* in the formula are calculated by multiplying the incarceration rate by the average sentence length for each type of crime (\( w_{i} \)):
+The *weights* in the formula are calculated by multiplying the incarceration rate by the average sentence length for each type of crime, $$ w_{i} $$:
 
 $$w_{i} = \text{Incarceration Rate}_{i} \times \text{Average Sentence Length}_{i}$$
   
