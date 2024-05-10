@@ -4,8 +4,6 @@ title: rethinking crime seveirty
 date: May 06, 2024
 ---
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
 2009 was a big year for folks at Statistics Canada. It marks the roll out of a metric called the Police-Reported Crime Severity Index (PRCSI) that has had a lasting impact on how we quantify crime. Before the PRCSI, crime was counted more simply as an unweighted frequency or proportion. With the PRCSI, different crimes get different weights indicative of their relative severity.
 
 Where do the weights come from? As the Stats Canites (Canners? Cannians?) that came up with the PRCSI explain in a [2009 working paper](https://publications.gc.ca/site/eng/9.840898/publication.html):
@@ -14,9 +12,11 @@ Where do the weights come from? As the Stats Canites (Canners? Cannians?) that c
 
 Let's summarize this using formal math. The formula for the PRCSI is:
 
+$$
 \[
 \text{PRCSI} = \left( \frac{\sum_{i} q_{i,t} \cdot w_{i,t}}{\text{pop}_t} \right) \div \left( \frac{\sum_{i} q_{i,b} \cdot w_{i,b}}{\text{pop}_b} \right) \times 100
 \]
+$$
 
 Where,
 - \( q_{i,t} \) represents the number of offences of type \( i \) in the current time period \( t \).
@@ -40,11 +40,11 @@ For fraud under $5000, if the incarceration rate is 10% and the average sentence
   0.10 \times 365 = 36.5
   \]
   
-## So what if we changed w?
+## So what if we changed *w*?
 
 Babyak and the other authors of the PRCSI faced a series of critical choices about what weights to assign to different crimes. They settled on using sentencing data, which has its merits, but imagine the alternatives! And how these might impact our thinking in turn.
 
-For instance, what if we weighted crimes based on public perception? My guess is that crimes that are more feared or sensationalized—regardless of their actual frequency or maximum possible legal sentence—could be scored as more severe. Or what if we weighted crime counts by economic impact (super hard to get this data, *I know*, let's pretend)? Would this elevate in severity instead extremely damaging - but rarely prosecuted - crimes like market manipulation, collusion, or cybercrime. What effect would this have on how we measure and understand the year-to-year severity of crime?
+For instance, what if we weighted crimes based on public perception? My guess is that crimes that are more feared or sensationalized—regardless of their actual frequency or maximum possible legal sentence—could be scored as more severe. Or what if we weighted crime counts by economic impact (super hard to get this data, *I know*, let's pretend)? Would this elevate in severity instead extremely damaging - but rarely prosecuted - crimes like market manipulation, collusion, or cybercrime? What effect would this have on how we measure and understand the year-to-year severity of crime?
 
 **THE POINT IS** *how* we measure crime matters. It can profoundly influence how we perceive safety and the strategic direction of policing and policy. Metrics aren't neutral numerical representations; they are powerful tools that help construct our social reality. Methods, and their politics, are performative. They help produce the realities they describe.
 
